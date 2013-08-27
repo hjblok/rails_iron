@@ -1,3 +1,3 @@
-require "rails_iron/loader"
-require "rails_iron/worker"
+require_relative "rails_iron/loader"
+require_relative "rails_iron/worker"
 
