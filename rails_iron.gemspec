@@ -10,4 +10,6 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.license     = "MIT"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "guard"
+  s.add_development_dependency "guard-rspec"
 end
