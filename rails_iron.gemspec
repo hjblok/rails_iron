@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "rails_iron"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.date        = "2013-06-26"
   s.summary     = "RailsIron"
   s.description = "To simplify integrating iron.io into Rails"
