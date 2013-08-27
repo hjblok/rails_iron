@@ -23,7 +23,10 @@ module RailsIron
 
     # InstanceMethods
     def run
-      perform
+      begin
+        perform
+      rescue RailsIron::TemporaryError
+      end
     end
   end
 end

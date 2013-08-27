@@ -26,4 +26,14 @@ describe RailsIron::Worker do
 
     it { should respond_to :perform_async }
   end
+
+  context "RailsIron::TemporaryError" do
+    before(:each) do
+      instance.instance_eval do
+        def perform; raise RailsIron::TemporaryError; end
+      end
+    end
+
+    it { expect { instance.run }.not_to raise_error() }
+  end
 end
