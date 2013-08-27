@@ -23,11 +23,7 @@ module RailsIron
 
     # InstanceMethods
     def run
-      puts "run called"
-      # begin
       perform
-      # rescue
-      # end
     end
   end
 end
