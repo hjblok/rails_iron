@@ -1,3 +1,5 @@
+require "iron_worker_ng"
+
 module RailsIron
   module Worker
     def self.included(base)
@@ -19,6 +21,11 @@ module RailsIron
       # def perform_async(*args)
         # client_push('class' => self, 'args' => args)
       # end
+
+      def schedule
+        client = IronWorkerNG::Client.new
+        client.schedules.create(self.name)
+      end
     end
 
     # InstanceMethods
