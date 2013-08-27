@@ -1,3 +1,6 @@
+0.0.4
+- using require_relative
+
 0.0.3
 - rails config is in /task/config
 
