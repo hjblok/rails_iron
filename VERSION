@@ -1,3 +1,7 @@
+0.0.2
+- IronWorker runner calls run method
+- loader should run first
+
 0.0.1
 - perform class method can be defined a lot easier
 
