@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.homepage    = ""
   s.license     = "MIT"
+  s.add_development_dependency "rspec"
 end
