@@ -8,11 +8,9 @@ module RailsIron
 
     def load_rails
       unless defined?(Rails)
-        config = ::File.expand_path('../config/environment', $0)
-
-        if File.exists?(config)
+        if File.exists?("/task/config/environment.rb")
           ENV['RAILS_ENV'] ||= "production"
-          require ::File.expand_path('../config/environment', config)
+          require "/task/config/environment"
         end
       end
     end
