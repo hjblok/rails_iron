@@ -19,3 +19,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+def fixture(fixture)
+  File.new( File.join('spec', 'fixtures', fixture ) )
+end
