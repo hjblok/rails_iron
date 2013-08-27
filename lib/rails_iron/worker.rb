@@ -20,5 +20,14 @@ module RailsIron
         # client_push('class' => self, 'args' => args)
       # end
     end
+
+    # InstanceMethods
+    def run
+      puts "run called"
+      # begin
+      perform
+      # rescue
+      # end
+    end
   end
 end
