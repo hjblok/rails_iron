@@ -1,3 +1,10 @@
+0.0.5
+- queueing tasks has been added
+- retrying tasks has been added
+- perform_async queues the task
+- params are serialized and deserialized
+- perform is called with params
+
 0.0.4
 - using require_relative
 
