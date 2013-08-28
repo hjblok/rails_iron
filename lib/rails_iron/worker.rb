@@ -11,12 +11,9 @@ module RailsIron
         IronWorkerNG::Client.new
       end
 
-      def perform_async
-        puts "perform_async"
+      def perform_async(*args)
+        queue(args)
       end
-      # def perform_async(*args)
-        # client_push('class' => self, 'args' => args)
-      # end
 
       def queue(payload = nil)
         iron_worker.tasks.create(self.name, payload)

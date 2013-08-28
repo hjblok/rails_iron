@@ -33,14 +33,24 @@ describe RailsIron::Worker do
   context "ClassMethods" do
     subject { TestWork }
 
+    before(:each) do
+      stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks").
+        to_return(status: 200, body: fixture("post_tasks.json"))
+    end
+
     its(:iron_worker) { should be_kind_of(IronWorkerNG::Client) }
 
     it { should respond_to :perform_async }
     it { should respond_to :queue }
+
+    it "#perform_async queues task" do
+      expect { subject.perform_async }.not_to raise_error
+    end
+    it "#perform_async queues task with supplied args" do
+      expect { subject.perform_async("een", :twee, 3) }.not_to raise_error
+    end
   
     it "#queue queues task" do
-      stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks").
-        to_return(status: 200, body: fixture("post_tasks.json"))
       expect { subject.queue }.not_to raise_error
     end
     it "#queue optionally takes payload" do
