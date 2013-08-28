@@ -28,6 +28,8 @@ module RailsIron
       begin
         perform
       rescue RailsIron::TemporaryError
+        puts "TemporaryError raised, will retry task after 300 seconds"
+        rerun
       end
     end
 

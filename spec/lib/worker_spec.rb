@@ -52,6 +52,10 @@ describe RailsIron::Worker do
       end
     end
 
-    it { expect { instance.run }.not_to raise_error() }
+    it "reruns task" do
+      stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks/123abc456def789ghi012jkl/retry").
+        to_return(status: 200, body: fixture("post_tasks.json"))
+      expect { instance.run }.not_to raise_error
+    end
   end
 end
