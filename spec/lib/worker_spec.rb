@@ -1,5 +1,7 @@
 require "spec_helper"
 
+$iron_task_id = "123abc456def789ghi012jkl"
+
 class TestWork
   include RailsIron::Worker
 
@@ -13,12 +15,19 @@ describe RailsIron::Worker do
   let(:instance) { TestWork.new }
   subject { instance }
 
+  its(:iron_task_id) { should eq "123abc456def789ghi012jkl" }
 
   # InstanceMethods
   it { should respond_to :run }
-
   it "#perform the task" do
     instance.run.should be_true
+  end
+
+  it { should respond_to :rerun }
+  it "#rerun reruns the task" do
+    stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks/123abc456def789ghi012jkl/retry").
+      to_return(status: 200, body: fixture("post_tasks.json"))
+    expect { subject.rerun }.not_to raise_error
   end
 
   context "ClassMethods" do

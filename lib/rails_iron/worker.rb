@@ -30,5 +30,13 @@ module RailsIron
       rescue RailsIron::TemporaryError
       end
     end
+
+    def iron_task_id
+      $iron_task_id
+    end
+
+    def rerun
+      self.class.iron_worker.tasks.retry(iron_task_id, delay: 300)
+    end
   end
 end
