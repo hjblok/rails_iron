@@ -18,8 +18,8 @@ module RailsIron
         # client_push('class' => self, 'args' => args)
       # end
 
-      def queue
-        iron_worker.tasks.create(self.name)
+      def queue(payload = nil)
+        iron_worker.tasks.create(self.name, payload)
       end
     end
 

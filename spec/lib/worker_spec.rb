@@ -43,6 +43,9 @@ describe RailsIron::Worker do
         to_return(status: 200, body: fixture("post_tasks.json"))
       expect { subject.queue }.not_to raise_error
     end
+    it "#queue optionally takes payload" do
+      expect { subject.queue(["1", :twee]) }.not_to raise_error
+    end
   end
 
   context "RailsIron::TemporaryError" do
