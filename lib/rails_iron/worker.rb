@@ -30,6 +30,12 @@ module RailsIron
       end
     end
 
+    def args
+      args = JSON.load(params)
+      raise RailsIron::PermanentError, "Expected #{params} to be an Array" unless args.is_a?(Array)
+      args
+    end
+
     def iron_task_id
       $iron_task_id
     end
