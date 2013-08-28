@@ -12,7 +12,7 @@ module RailsIron
       end
 
       def perform_async(*args)
-        queue(args)
+        queue({params: args})
       end
 
       def queue(payload = nil)
@@ -21,6 +21,8 @@ module RailsIron
     end
 
     # InstanceMethods
+    attr_reader :params
+
     def run
       begin
         perform
@@ -30,18 +32,13 @@ module RailsIron
       end
     end
 
-    def args
-      args = JSON.load(params)
-      raise RailsIron::PermanentError, "Expected #{params} to be an Array" unless args.is_a?(Array)
-      args
-    end
-
     def iron_task_id
       $iron_task_id
     end
 
-    def params
-      $params
+    def params=(params)
+      raise RailsIron::PermanentError, "Expected #{params} to be an Array" unless params.is_a?(Array)
+      @params = params
     end
 
     def rerun

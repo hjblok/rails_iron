@@ -1,7 +1,6 @@
 require "spec_helper"
 
 $iron_task_id = "123abc456def789ghi012jkl"
-$params = '[1, "twee", "drie"]'
 
 class TestWork
   include RailsIron::Worker
@@ -16,9 +15,10 @@ describe RailsIron::Worker do
   let(:instance) { TestWork.new }
   subject { instance }
 
+  before { instance.params = [1, "twee", "drie"] }
+
   its(:iron_task_id) { should eq "123abc456def789ghi012jkl" }
-  its(:params) { should eq '[1, "twee", "drie"]' }
-  its(:args) { should eq [1, "twee", "drie"] }
+  its(:params) { should eq [1, "twee", "drie"] }
 
   # InstanceMethods
   it { should respond_to :run }
@@ -33,9 +33,11 @@ describe RailsIron::Worker do
     expect { subject.rerun }.not_to raise_error
   end
 
-  it "#args raises error when params isn't an Array" do
-    subject.stub(:params) { '{"valid JSON":true}' }
-    expect { subject.args }.to raise_error(RailsIron::PermanentError)
+  it "#params= should set params" do
+    expect { instance.params = ["twee"] }.to change { instance.params }.to(["twee"])
+  end
+  it "#params= should raise error when params isn't an Array" do
+    expect { subject.params = "geen array" }.to raise_error(RailsIron::PermanentError)
   end
 
   context "ClassMethods" do
@@ -52,17 +54,19 @@ describe RailsIron::Worker do
     it { should respond_to :queue }
 
     it "#perform_async queues task" do
-      expect { subject.perform_async }.not_to raise_error
+      subject.should_receive(:queue).with({params: []})
+      subject.perform_async
     end
     it "#perform_async queues task with supplied args" do
-      expect { subject.perform_async("een", :twee, 3) }.not_to raise_error
+      subject.should_receive(:queue).with({params: ["een", :twee, 3]})
+      subject.perform_async("een", :twee, 3)
     end
   
     it "#queue queues task" do
       expect { subject.queue }.not_to raise_error
     end
     it "#queue optionally takes payload" do
-      expect { subject.queue(["1", :twee]) }.not_to raise_error
+      expect { subject.queue("payload") }.not_to raise_error
     end
   end
 
