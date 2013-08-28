@@ -7,6 +7,8 @@ module RailsIron
     end
 
     module ClassMethods
+      def iron_worker
+        IronWorkerNG::Client.new
       end
 
       def perform_async
@@ -16,9 +18,8 @@ module RailsIron
         # client_push('class' => self, 'args' => args)
       # end
 
-      def schedule
-        client = IronWorkerNG::Client.new
-        client.schedules.create(self.name)
+      def queue
+        iron_worker.tasks.create(self.name)
       end
     end
 
