@@ -34,6 +34,10 @@ module RailsIron
       $iron_task_id
     end
 
+    def params
+      $params
+    end
+
     def rerun
       self.class.iron_worker.tasks.retry(iron_task_id, delay: 300)
     end

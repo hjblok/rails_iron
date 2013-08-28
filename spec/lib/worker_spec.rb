@@ -1,6 +1,7 @@
 require "spec_helper"
 
 $iron_task_id = "123abc456def789ghi012jkl"
+$params = '[1, "twee", "drie"]'
 
 class TestWork
   include RailsIron::Worker
@@ -16,6 +17,7 @@ describe RailsIron::Worker do
   subject { instance }
 
   its(:iron_task_id) { should eq "123abc456def789ghi012jkl" }
+  its(:params) { should eq '[1, "twee", "drie"]' }
 
   # InstanceMethods
   it { should respond_to :run }
