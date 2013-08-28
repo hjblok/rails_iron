@@ -7,12 +7,6 @@ module RailsIron
     end
 
     module ClassMethods
-      def perform
-        puts "dong the ahrd wrko"
-        # begin
-          self.new.perform
-        # rescue
-        # end
       end
 
       def perform_async
