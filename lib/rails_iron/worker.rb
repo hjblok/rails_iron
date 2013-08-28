@@ -25,7 +25,7 @@ module RailsIron
 
     def run
       begin
-        perform
+        perform(*params)
       rescue RailsIron::TemporaryError
         puts "TemporaryError raised, will retry task after 300 seconds"
         rerun

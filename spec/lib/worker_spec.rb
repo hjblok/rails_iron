@@ -5,7 +5,7 @@ $iron_task_id = "123abc456def789ghi012jkl"
 class TestWork
   include RailsIron::Worker
 
-  def perform
+  def perform(a,b,c)
     true
   end
 end
@@ -13,17 +13,19 @@ end
 
 describe RailsIron::Worker do
   let(:instance) { TestWork.new }
+  let(:params) { [1, "twee", "drie"] }
   subject { instance }
 
-  before { instance.params = [1, "twee", "drie"] }
+  before { instance.params = params }
 
   its(:iron_task_id) { should eq "123abc456def789ghi012jkl" }
-  its(:params) { should eq [1, "twee", "drie"] }
+  its(:params) { should eq params }
 
   # InstanceMethods
   it { should respond_to :run }
   it "#perform the task" do
-    instance.run.should be_true
+    instance.should_receive(:perform).with(*params)
+    instance.run
   end
 
   it { should respond_to :rerun }
@@ -73,7 +75,7 @@ describe RailsIron::Worker do
   context "RailsIron::TemporaryError" do
     before(:each) do
       instance.instance_eval do
-        def perform; raise RailsIron::TemporaryError; end
+        def perform(a,b,c); raise RailsIron::TemporaryError; end
       end
     end
 
