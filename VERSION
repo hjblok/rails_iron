@@ -1,3 +1,6 @@
+0.0.6
+- #queue raises RailsIron::TemporaryError when timeout occurs
+
 0.0.5
 - queueing tasks has been added
 - retrying tasks has been added
