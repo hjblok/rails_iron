@@ -32,14 +32,14 @@ describe RailsIron::Worker do
   it "#rerun reruns the task" do
     stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks/123abc456def789ghi012jkl/retry").
       to_return(status: 200, body: fixture("post_tasks.json"))
-    expect { subject.rerun }.not_to raise_error
+    expect { instance.rerun }.not_to raise_error
   end
 
   it "#params= should set params" do
     expect { instance.params = ["twee"] }.to change { instance.params }.to(["twee"])
   end
   it "#params= should raise error when params isn't an Array" do
-    expect { subject.params = "geen array" }.to raise_error(RailsIron::PermanentError)
+    expect { instance.params = "geen array" }.to raise_error(RailsIron::PermanentError)
   end
 
   context "ClassMethods" do
@@ -72,7 +72,7 @@ describe RailsIron::Worker do
     end
   end
 
-  context "RailsIron::TemporaryError" do
+  context "#perform can raise RailsIron::TemporaryError to rerun the task" do
     before(:each) do
       instance.instance_eval do
         def perform(a,b,c); raise RailsIron::TemporaryError; end
@@ -80,9 +80,8 @@ describe RailsIron::Worker do
     end
 
     it "reruns task" do
-      stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks/123abc456def789ghi012jkl/retry").
-        to_return(status: 200, body: fixture("post_tasks.json"))
-      expect { instance.run }.not_to raise_error
+      instance.should_receive(:rerun)
+      instance.run
     end
   end
 end
