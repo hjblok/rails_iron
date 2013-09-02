@@ -1,5 +1,6 @@
 # make iron_task_id global available
-if respond_to?("iron_task_id")
+# iron_task_id is a private method
+if respond_to?(:iron_task_id, true)
   $iron_task_id = iron_task_id
 end
 
