@@ -5,5 +5,6 @@ if respond_to?(:iron_task_id, true)
 end
 
 require_relative "rails_iron/error"
-require_relative "rails_iron/loader"
 require_relative "rails_iron/worker"
+require_relative "rails_iron/loader"
+
