@@ -1,3 +1,6 @@
+0.0.8
+- load order changed
+
 0.0.7
 - bug in setting $iron_task_id
 
