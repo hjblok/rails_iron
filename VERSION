@@ -1,0 +1,31 @@
+0.0.8
+- load order changed
+
+0.0.7
+- bug in setting $iron_task_id
+
+0.0.6
+- #queue raises RailsIron::TemporaryError when timeout occurs
+
+0.0.5
+- queueing tasks has been added
+- retrying tasks has been added
+- perform_async queues the task
+- params are serialized and deserialized
+- perform is called with params
+
+0.0.4
+- using require_relative
+
+0.0.3
+- rails config is in /task/config
+
+0.0.2
+- IronWorker runner calls run method
+- loader should run first
+
+0.0.1
+- perform class method can be defined a lot easier
+
+0.0.0
+- initial release
