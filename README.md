@@ -1,6 +1,8 @@
 RailsIron
 =========
 
+[![Gem Version](https://badge.fury.io/rb/rails_iron.png)](http://badge.fury.io/rb/rails_iron) [![Build Status](https://travis-ci.org/hjblok/rails_iron.png?branch=master)](https://travis-ci.org/hjblok/rails_iron) 
+
 Process background tasks for Rails applications using [IronWorker][4].
 The aim is to provide a [Sidekiq][5] compatible interface.
 
