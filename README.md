@@ -10,7 +10,9 @@ The aim is to provide a [Sidekiq][5] compatible interface.
 Installation
 ------------
 
-    gem install rails_iron
+```sh
+$ gem install rails_iron
+```
 
 
 Usage
@@ -71,7 +73,9 @@ Testing
 
 To run the tests:
 
-    $ rspec
+```sh
+$ rspec
+```
 
 
 Contributing
