@@ -18,38 +18,43 @@ Usage
 
 Add a worker into your `app/workers` folder:
 
-    # app/workers/my_hard_worker.rb
-    require "rails_iron"
+```ruby
+# app/workers/my_hard_worker.rb
+require "rails_iron"
 
-    class MyHardWorker
-      include RailsIron::Worker
+class MyHardWorker
+  include RailsIron::Worker
 
-      def perform
-        10.times { "hard work" }
-      end
-    end
+  def perform
+    10.times { "hard work" }
+  end
+end
+```
 
 The `require "rails_iron"` is necessary to boot your Iron.io worker.
 
 Now go ahead and create a background task from within your application:
 
-    MyHardWorker.perform_async
+```ruby
+MyHardWorker.perform_async
+```
 
 You may also supply arguments to the worker:
 
-    # app/workers/my_hard_worker.rb
-    require "rails_iron"
+```ruby
+# app/workers/my_hard_worker.rb
+require "rails_iron"
 
-    class MyHardWorker
-      include RailsIron::Worker
+class MyHardWorker
+  include RailsIron::Worker
 
-      def perform(work)
-        puts "hard #{work}"
-      end
-    end
+  def perform(work)
+    puts "hard #{work}"
+  end
+end
 
-    MyHardWorker.perform_async("rock")
-
+MyHardWorker.perform_async("rock")
+```
 
 Todo
 ----
