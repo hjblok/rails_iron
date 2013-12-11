@@ -1,7 +1,7 @@
 RailsIron
 =========
 
-[![Gem Version](https://badge.fury.io/rb/rails_iron.png)](http://badge.fury.io/rb/rails_iron) [![Build Status](https://travis-ci.org/hjblok/rails_iron.png?branch=master)](https://travis-ci.org/hjblok/rails_iron) [![Code Climate](https://codeclimate.com/github/hjblok/rails_iron.png)](https://codeclimate.com/github/hjblok/rails_iron) [![Coverage Status](https://coveralls.io/repos/hjblok/rails_iron/badge.png)](https://coveralls.io/r/hjblok/rails_iron)
+[![Gem Version](https://badge.fury.io/rb/rails_iron.png)](http://badge.fury.io/rb/rails_iron) [![Build Status](https://travis-ci.org/hjblok/rails_iron.png?branch=master)](https://travis-ci.org/hjblok/rails_iron) [![Code Climate](https://codeclimate.com/github/hjblok/rails_iron.png)](https://codeclimate.com/github/hjblok/rails_iron) [![Coverage Status](https://coveralls.io/repos/hjblok/rails_iron/badge.png)](https://coveralls.io/r/hjblok/rails_iron) [![Dependency Status](https://gemnasium.com/hjblok/rails_iron.png)](https://gemnasium.com/hjblok/rails_iron)
 
 Process background tasks for Rails applications using [IronWorker][4].
 The aim is to provide a [Sidekiq][5] compatible interface.
