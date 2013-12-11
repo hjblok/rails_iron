@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.add_runtime_dependency "iron_worker_ng", "~> 1.0.1"
   s.add_runtime_dependency "typhoeus", "~> 0.6.5"
+  s.add_development_dependency "coveralls"
   s.add_development_dependency "rspec"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"
