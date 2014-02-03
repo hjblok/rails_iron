@@ -26,6 +26,7 @@ module RailsIron
 
     # InstanceMethods
     attr_reader :params
+    attr_accessor :iron_task_id
 
     def run
       begin
@@ -34,10 +35,6 @@ module RailsIron
         puts "TemporaryError raised, will retry task after 300 seconds"
         rerun
       end
-    end
-
-    def iron_task_id
-      $iron_task_id
     end
 
     def params=(params)

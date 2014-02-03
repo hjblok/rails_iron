@@ -3,11 +3,15 @@ require "spec_helper"
 describe RailsIron::Worker do
   let(:instance) { TestWork.new }
   let(:params) { [1, "twee", "drie"] }
+  let(:iron_task_id) { "123abc456def789ghi012jkl" }
   subject { instance }
 
-  before { instance.params = params }
+  before do
+    instance.params = params
+    instance.iron_task_id = iron_task_id
+  end
 
-  its(:iron_task_id) { should eq "123abc456def789ghi012jkl" }
+  its(:iron_task_id) { should eq iron_task_id }
   its(:params) { should eq params }
 
   # InstanceMethods
@@ -29,6 +33,10 @@ describe RailsIron::Worker do
   end
   it "#params= should raise error when params isn't an Array" do
     expect { instance.params = "geen array" }.to raise_error(RailsIron::PermanentError)
+  end
+
+  it "#iron_task_id= should set iron_task_id" do
+    expect { instance.iron_task_id = "1" }.to change { instance.iron_task_id }.to("1")
   end
 
   context "ClassMethods" do
