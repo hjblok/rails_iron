@@ -3,3 +3,6 @@ rvm:
   - 1.9.3
   - 2.0.0
 script: bundle exec rspec spec
+env:
+  - IRON_WORKER_TOKEN=123abc456def789ghi012jkl
+  - IRON_WORKER_PROJECT_ID=521cc0534c209d0005000005
