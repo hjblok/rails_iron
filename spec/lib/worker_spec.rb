@@ -1,16 +1,5 @@
 require "spec_helper"
 
-$iron_task_id = "123abc456def789ghi012jkl"
-
-class TestWork
-  include RailsIron::Worker
-
-  def perform(a,b,c)
-    true
-  end
-end
-
-
 describe RailsIron::Worker do
   let(:instance) { TestWork.new }
   let(:params) { [1, "twee", "drie"] }
