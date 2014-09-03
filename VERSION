@@ -1,3 +1,6 @@
+0.0.10
+- gem updates
+
 0.0.9
 - gem updates
 - iron_worker runner sets iron_task_id

@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.homepage    = ""
   s.license     = "MIT"
-  s.add_runtime_dependency "iron_worker_ng", "~> 1.1.0"
-  s.add_runtime_dependency "typhoeus", "~> 0.6.7"
+  s.add_runtime_dependency "iron_worker_ng", "~> 1.1"
+  s.add_runtime_dependency "typhoeus", "~> 0.6"
   s.add_development_dependency "coveralls"
   s.add_development_dependency "rspec"
   s.add_development_dependency "guard"
