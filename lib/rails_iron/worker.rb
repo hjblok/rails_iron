@@ -18,7 +18,7 @@ module RailsIron
       def queue(payload = nil)
         begin
           iron_worker.tasks.create(self.name, payload)
-        rescue Rest::Wrappers::TyphoeusTimeoutError => t
+        rescue Net::HTTP::Persistent::Error => t
           raise RailsIron::TemporaryError, t.message
         end
       end

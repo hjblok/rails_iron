@@ -1,5 +1,6 @@
 require "rails_iron"
 
+require 'rspec/its'
 require "webmock/rspec"
 
 require "coveralls"
