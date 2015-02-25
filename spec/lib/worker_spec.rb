@@ -86,7 +86,7 @@ describe RailsIron::Worker do
     it '#queue catches Net::HTTP::Persistent::Error' do
       stub_request(:post, 'https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks').
         to_timeout
-      expect { TestWork.queue }.to raise_error(RailsIron::TemporaryError, /too many connection resets \(due to execution expired - Timeout::Error\) after 3 requests/)
+      expect { TestWork.queue }.to raise_error(RailsIron::TemporaryError, /too many connection resets \(due to execution expired - Timeout::Error\) after \d requests on/)
     end
   end
 end
