@@ -16,10 +16,11 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.homepage    = ""
   s.license     = "MIT"
-  s.add_runtime_dependency "iron_worker_ng", "~> 1.1"
-  s.add_runtime_dependency "typhoeus", "~> 0.6"
+  s.add_runtime_dependency 'iron_worker_ng', '~> 1.6'
+  s.add_runtime_dependency 'typhoeus'
   s.add_development_dependency "coveralls"
-  s.add_development_dependency "rspec", "~> 2.14"
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec-its'
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "webmock"
