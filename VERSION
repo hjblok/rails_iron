@@ -1,3 +1,7 @@
+0.0.11
+- deprecate ruby 1.9.3 and add newest rubies
+- update gems
+
 0.0.10
 - gem updates
 
