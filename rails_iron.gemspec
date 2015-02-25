@@ -1,7 +1,14 @@
+# -*- encoding: utf-8 -*-
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
+
+require 'rails_iron/version'
+require 'date'
+
 Gem::Specification.new do |s|
   s.name        = "rails_iron"
-  s.version     = "0.0.10"
-  s.date        = "2014-02-03"
+  s.version     = RailsIron::VERSION
+  s.date        = Date.today
   s.summary     = "RailsIron"
   s.description = "To simplify integrating iron.io into Rails"
   s.authors     = ["H.J. Blok"]
