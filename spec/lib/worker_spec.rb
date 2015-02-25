@@ -60,7 +60,7 @@ describe RailsIron::Worker do
       subject.should_receive(:queue).with({params: ["een", :twee, 3]})
       subject.perform_async("een", :twee, 3)
     end
-  
+
     it "#queue queues task" do
       expect { subject.queue }.not_to raise_error
     end
@@ -83,10 +83,10 @@ describe RailsIron::Worker do
   end
 
   context "#queue temporary exceptions raise RailsIron::TemporaryError" do
-    it "#queue catches Rest::Wrappers::TyphoeusTimeoutError" do
-      stub_request(:post, "https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks").
+    it '#queue catches Net::HTTP::Persistent::Error' do
+      stub_request(:post, 'https://worker-aws-us-east-1.iron.io/2/projects/521cc0534c209d0005000005/tasks').
         to_timeout
-      expect { TestWork.queue }.to raise_error(RailsIron::TemporaryError, "HTTP Request Timed out. Curl code: operation_timedout. Curl error msg: Timeout was reached.")
+      expect { TestWork.queue }.to raise_error(RailsIron::TemporaryError, /too many connection resets \(due to execution expired - Timeout::Error\) after 3 requests/)
     end
   end
 end
